@@ -1,8 +1,10 @@
 import IUser from "./user.interface.js";
 import User from "./user.js";
+import mongoose from "mongoose";
 
-const findOne = async () => {
-  const user = await User.findOne();
+const findOne = async (id: string) => {
+  const _id = new mongoose.Types.ObjectId(id);
+  const user = await User.findOne({ _id });
   return user;
 };
 
