@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import mongoose from "mongoose";
+import userRouter from "./routes/users.js";
 import "dotenv/config";
 
 const app = express();
@@ -12,6 +13,8 @@ try {
 } catch (error) {
   console.log(error);
 }
+
+app.use(userRouter);
 
 app.get("/", (req: Request, res: Response) => {
   return res.status(200).send("<h1> Hello From Express/Ts </h1>");
